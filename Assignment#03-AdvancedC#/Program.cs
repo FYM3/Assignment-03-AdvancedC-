@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Assignment_03_AdvancedC_
 {
@@ -50,6 +52,38 @@ namespace Assignment_03_AdvancedC_
             //    ListNumber.Add($"Grade: {i}");
 
             //Console.WriteLine($"{string.Join(",", ListNumber)}");
+
+            #endregion
+
+            #region Q2) => Exercise 2: Leaderboard
+
+            // 1. Add: 500="Ahmed", 200="Sara", 800="Ali", 350="Mona"
+            SortedDictionary<int, string> entries = new SortedDictionary<int, string>
+            { [500] = "Ahmed", [200] = "Sara", [800] = "Ali", [350] = "Mona" };
+
+
+            // 2.Print all entries(they should be sorted by score automatically)
+            Console.WriteLine($"{string.Join(",", entries)}\n");
+
+
+            // 3.Access the first key and first value
+            Console.WriteLine($"First Key: {entries.First().Key}, First value: {entries.First().Value}\n");
+
+
+            // 4.Check if score 500 exists
+            Console.WriteLine($"Check if score 500 exists: {entries.ContainsKey(500)}\n");
+
+            // 5.Safely get the player with score 999
+            if (entries.TryGetValue(999, out string? player))
+                Console.WriteLine($"Player with score 999: {player}\n");
+            else
+                Console.WriteLine("Player with score 999 does not exist\n");
+
+
+            // 6.Remove the player with score 200 and print the updated list
+            Console.WriteLine($"Remove the player with score 200: {entries.Remove(200)}");
+            Console.WriteLine("After Remove");
+            Console.WriteLine($"{string.Join(",", entries)}\n");
 
             #endregion
 
