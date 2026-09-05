@@ -136,6 +136,70 @@ namespace Assignment_03_AdvancedC_
 
             #endregion
 
+            #region Q4) => Exercise 4: Unique Email Validator
+
+            // 1. Create a HashSet<string> with a case-insensitive comparer
+            HashSet<string> Emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+
+            // 2. Add these emails
+            Emails.Add("ahmed@test.com");
+            Emails.Add("AHMED@test.com");
+            Emails.Add("sara@test.com");
+            Emails.Add("Sara@Test.Com");
+
+
+            // 3. Print Count — how many are actually stored?
+            Console.WriteLine($"Count: {Emails.Count}");
+
+            // HashSet does not allow duplicate values.
+            // StringComparer.OrdinalIgnoreCase makes comparison case-insensitive.
+            // Therefore:
+            // "ahmed@test.com" == "AHMED@test.com"
+            // "sara@test.com"  == "Sara@Test.Com"
+            // Result = 2
+
+
+            // 4. Create two sets
+            HashSet<int> SetA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            HashSet<int> SetB = new HashSet<int> { 4, 5, 6, 7, 8 };
+
+
+            // 5. UnionWith
+            HashSet<int> UnionSet = new HashSet<int>(SetA);
+            UnionSet.UnionWith(SetB);
+
+            Console.WriteLine($"Union With: {string.Join(", ", UnionSet)}");
+            // Result: 1, 2, 3, 4, 5, 6, 7, 8
+
+
+            // IntersectWith
+            HashSet<int> IntersectSet = new HashSet<int>(SetA);
+            IntersectSet.IntersectWith(SetB);
+
+            Console.WriteLine($"Intersect With: {string.Join(", ", IntersectSet)}");
+            // Result: 4, 5
+
+
+            // ExceptWith
+            HashSet<int> ExceptSet = new HashSet<int>(SetA);
+            ExceptSet.ExceptWith(SetB);
+
+            Console.WriteLine($"Except With: {string.Join(", ", ExceptSet)}");
+            // Result: 1, 2, 3
+
+
+            // 6. Use IsSubsetOf to check if {1, 2} is a subset of Set A
+
+            HashSet<int> Subset = new HashSet<int> { 1, 2 };
+
+            bool IsSubset = Subset.IsSubsetOf(SetA);
+
+            Console.WriteLine($"Is Subset Of: {IsSubset}");
+            // Result: True
+
+            #endregion
+
         }
     }
 }
